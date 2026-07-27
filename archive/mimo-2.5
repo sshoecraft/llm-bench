@@ -1,0 +1,16 @@
+#!/bin/bash
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+
+/home/steve/venvs/vllm/bin/vllm serve shadowlilac/MiMo-V2.5-NVFP4 \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 32768 \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+        --tool-call-parser mimo \
+        --reasoning-parser mimo \
+        --kv-cache-dtype auto \
+        --compilation-config '{"mode":"VLLM_COMPILE"}' \
+        --gpu-memory-utilization 0.85 \
+        --max-num-batched-tokens 4096
+

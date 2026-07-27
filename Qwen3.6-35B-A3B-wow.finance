@@ -1,0 +1,12 @@
+======================================================================
+MMLU BENCHMARK RESULTS
+======================================================================
+Provider: API (http://localhost:8000)
+Total Questions: 100
+Correct: 96
+Incorrect: 4
+Errors: 0
+Accuracy: 96.0%
+Avg Response Time: 7600ms
+Total Duration: 760.0s
+======================================================================

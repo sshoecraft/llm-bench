@@ -1,0 +1,9 @@
+## project
+- [diffusiongemma-vllm-nightly-tp-patch](diffusiongemma-vllm-nightly-tp-patch.md) — DiffusionGemma needs vllm nightly (>=0.22.1rc1.dev466) + local TP fix patched into venv's diffusion_gemma.py — any vllm upgrade wipes the patch
+- [fp8-dead-end-do-not-suggest](fp8-dead-end-do-not-suggest.md) — DO NOT suggest FP8 anything on this 4x3090 box: no FP8 tensor cores (SM 8.6), kv-cache-dtype fp8/fp8_e5m2 tried repeatedly and errors, wouldn't help…
+- [gemma4-vs-qwen36-latency-tuning-4x3090](gemma4-vs-qwen36-latency-tuning-4x3090.md) — Measured single-stream latency sweep on 4x3090: gemma-4-26B-A4B-it is already optimal; Qwen3.6 MTP is a 12-21% pessimization on Ampere
+- [transformers5-stale-image-processor-type](transformers5-stale-image-processor-type.md) — transformers 5.x rejects old VLM repos whose preprocessor_config.json names a removed image processor class (e.g. Qwen2_5_VLImageProcessor); patch th…
+- [vllm-local-patches-and-config-landmines](vllm-local-patches-and-config-landmines.md) — vLLM local patches wiped by upgrades, the max-num-batched-tokens landmine (Qwen KV cliff + gemma OOM), and the api_bench temp-0.7 default worth ~6% n…
+
+## reference
+- [claude-code-custom-context-window](claude-code-custom-context-window.md) — Claude Code v2.1.x custom-model context window: set CLAUDE_CODE_MAX_CONTEXT_TOKENS + DISABLE_COMPACT env vars; settings.json "models" key is ignored.

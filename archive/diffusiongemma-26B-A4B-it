@@ -1,0 +1,16 @@
+#!/bin/bash
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+
+/home/steve/venvs/vllm/bin/vllm serve google/diffusiongemma-26B-A4B-it \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 262144 \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+        --tool-call-parser gemma4 \
+        --reasoning-parser gemma4 \
+        --max-num-seqs 8 \
+        --max-num-batched-tokens 16384 \
+        --kv-cache-dtype auto \
+        --gpu-memory-utilization 0.83 \
+        --default-chat-template-kwargs '{"enable_thinking":true}'

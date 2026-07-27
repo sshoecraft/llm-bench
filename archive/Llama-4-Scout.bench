@@ -1,0 +1,40 @@
+Auto-selected model: nvidia/Llama-4-Scout-17B-16E-Instruct-NVFP4
+Benchmarking: http://localhost:8000/v1
+Model: nvidia/Llama-4-Scout-17B-16E-Instruct-NVFP4
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 51.57 t/s, TTFT: 146.9ms, ITL: 19.39ms, tokens: 1398
+  Run 2: 36.63 t/s, TTFT: 151.0ms, ITL: 27.30ms, tokens: 1433
+  Run 3: 38.25 t/s, TTFT: 230.1ms, ITL: 26.14ms, tokens: 941
+  Run 4: 37.13 t/s, TTFT: 208.0ms, ITL: 26.93ms, tokens: 926
+  Run 5: 38.91 t/s, TTFT: 201.3ms, ITL: 25.70ms, tokens: 1478
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 1235.2
+
+Tokens/sec:
+  Mean:   40.50
+  Median: 38.25
+  StdDev: 6.25
+  P5:     36.63
+  P95:    51.57
+
+Time to First Token (ms):
+  Mean:   187.5
+  Median: 201.3
+  P5:     146.9
+  P95:    230.1
+
+Inter-Token Latency (ms):
+  Mean:   25.09
+  Median: 26.14
+============================================================

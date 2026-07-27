@@ -1,0 +1,40 @@
+Auto-selected model: Qwen/Qwen3.6-35B-A3B
+Benchmarking: http://localhost:8000/v1
+Model: Qwen/Qwen3.6-35B-A3B
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 155.58 t/s, TTFT: 90.7ms, ITL: 6.43ms, tokens: 2048
+  Run 2: 155.77 t/s, TTFT: 81.7ms, ITL: 6.42ms, tokens: 2048
+  Run 3: 147.66 t/s, TTFT: 89.6ms, ITL: 6.77ms, tokens: 2048
+  Run 4: 143.87 t/s, TTFT: 93.6ms, ITL: 6.95ms, tokens: 2048
+  Run 5: 145.28 t/s, TTFT: 95.1ms, ITL: 6.88ms, tokens: 2048
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 2048.0
+
+Tokens/sec:
+  Mean:   149.63
+  Median: 147.66
+  StdDev: 5.68
+  P5:     143.87
+  P95:    155.77
+
+Time to First Token (ms):
+  Mean:   90.2
+  Median: 90.7
+  P5:     81.7
+  P95:    95.1
+
+Inter-Token Latency (ms):
+  Mean:   6.69
+  Median: 6.77
+============================================================

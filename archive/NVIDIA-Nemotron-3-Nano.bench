@@ -1,0 +1,41 @@
+Auto-selected model: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 214.52 t/s, TTFT: 56.9ms, ITL: 4.66ms, tokens: 2048
+  Run 2: 214.72 t/s, TTFT: 71.5ms, ITL: 4.66ms, tokens: 2048
+  Run 3: 214.25 t/s, TTFT: 57.0ms, ITL: 4.67ms, tokens: 2048
+  Run 4: 213.56 t/s, TTFT: 55.2ms, ITL: 4.68ms, tokens: 2048
+  Run 5: 213.50 t/s, TTFT: 62.9ms, ITL: 4.68ms, tokens: 2048
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 2048.0
+
+Tokens/sec:
+  Mean:   214.11
+  Median: 214.25
+  StdDev: 0.56
+  P5:     213.50
+  P95:    214.72
+
+Time to First Token (ms):
+  Mean:   60.7
+  Median: 57.0
+  P5:     55.2
+  P95:    71.5
+
+Inter-Token Latency (ms):
+  Mean:   4.67
+  Median: 4.67
+============================================================

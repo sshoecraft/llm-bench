@@ -1,0 +1,15 @@
+/home/steve/venvs/vllm/bin/vllm serve lokeshe09/gemma-4-31B-it-INT8 \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 262144 \
+        --enable-prefix-caching \
+        --enable-chunked-prefill \
+        --enable-auto-tool-choice \
+        --tool-call-parser gemma4 \
+        --reasoning-parser gemma4 \
+        --chat-template /home/steve/models/tool_chat_template_gemma4.jinja \
+        --max-num-seqs 8 \
+        --max-num-batched-tokens 8192 \
+	--compilation-config '{"cudagraph_capture_sizes":[1,2,4,8]}' \
+	--gpu-memory-utilization 0.97 \
+        --default-chat-template-kwargs '{"enable_thinking":true}'

@@ -1,0 +1,19 @@
+========================================================================
+  FINANCIAL RISK-PERSONA PROFILE
+========================================================================
+  Model : google/gemma-4-26B-A4B-it
+  sigma (curvature)     : +0.003   risk-neutral
+     (series1 +0.00 / series2 +0.00)
+  lambda (loss aversion): +0.921   loss-neutral
+  alpha (prob weighting): +1.001   near-linear (no distortion)
+  Holt-Laury CRRA r     : +0.006   risk-neutral  (4 safe choices)
+  Grable-Lytton (stated): 40.5  -> High risk tolerance (aggressive investor)
+  reflection effect     : 0.0  (>0 = risk-seeking in losses / framing-sensitive)
+  ambiguity aversion    : 0.0  (>0 = shuns ambiguous odds)
+------------------------------------------------------------------------
+  CONSERVATISM INDEX :  49 / 100   (balanced / risk-neutral)
+  risk-liberal 0 [------------------------|--------------------------] 100 conservative
+========================================================================
+  Note: compare REVEALED (sigma/lambda) vs STATED (Grable) — divergence is a finding.
+  total call errors: 2
+========================================================================

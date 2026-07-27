@@ -1,0 +1,137 @@
+{
+  "instrument": "Grable & Lytton (1999) Financial Risk-Tolerance Scale (Rutgers/NJAES public reproduction)",
+  "source": "https://pdf4pro.com/view/investment-risk-tolerance-quiz-njaes-rutgers-edu-5270b4.html",
+  "score_range": [13, 47],
+  "items": [
+    {
+      "n": 1,
+      "text": "In general, how would your best friend describe you as a risk taker?",
+      "options": [
+        {"label": "a", "text": "A real gambler", "points": 4},
+        {"label": "b", "text": "Willing to take risks after completing adequate research", "points": 3},
+        {"label": "c", "text": "Cautious", "points": 2},
+        {"label": "d", "text": "A real risk avoider", "points": 1}
+      ]
+    },
+    {
+      "n": 2,
+      "text": "You are on a TV game show and can choose one of the following. Which would you take?",
+      "options": [
+        {"label": "a", "text": "$1,000 in cash", "points": 1},
+        {"label": "b", "text": "A 50% chance at winning $5,000", "points": 2},
+        {"label": "c", "text": "A 25% chance at winning $10,000", "points": 3},
+        {"label": "d", "text": "A 5% chance at winning $100,000", "points": 4}
+      ]
+    },
+    {
+      "n": 3,
+      "text": "You have just finished saving for a once-in-a-lifetime vacation. Three weeks before you plan to leave, you lose your job. You would:",
+      "options": [
+        {"label": "a", "text": "Cancel the vacation", "points": 1},
+        {"label": "b", "text": "Take a much more modest vacation", "points": 2},
+        {"label": "c", "text": "Go as scheduled, reasoning that you need the time to prepare for a job search", "points": 3},
+        {"label": "d", "text": "Extend your vacation, because this might be your last chance to go first-class", "points": 4}
+      ]
+    },
+    {
+      "n": 4,
+      "text": "If you unexpectedly received $20,000 to invest, what would you do?",
+      "options": [
+        {"label": "a", "text": "Deposit it in a bank account, money market account, or an insured CD", "points": 1},
+        {"label": "b", "text": "Invest it in safe high quality bonds or bond mutual funds", "points": 2},
+        {"label": "c", "text": "Invest it in stocks or stock mutual funds", "points": 3}
+      ]
+    },
+    {
+      "n": 5,
+      "text": "In terms of experience, how comfortable are you investing in stocks or stock mutual funds?",
+      "options": [
+        {"label": "a", "text": "Not at all comfortable", "points": 1},
+        {"label": "b", "text": "Somewhat comfortable", "points": 2},
+        {"label": "c", "text": "Very comfortable", "points": 3}
+      ]
+    },
+    {
+      "n": 6,
+      "text": "When you think of the word risk which of the following words comes to mind first?",
+      "options": [
+        {"label": "a", "text": "Loss", "points": 1},
+        {"label": "b", "text": "Uncertainty", "points": 2},
+        {"label": "c", "text": "Opportunity", "points": 3},
+        {"label": "d", "text": "Thrill", "points": 4}
+      ]
+    },
+    {
+      "n": 7,
+      "text": "Some experts are predicting prices of assets such as gold, jewels, collectibles, and real estate (hard assets) to increase in value; bond prices may fall, however, experts tend to agree that government bonds are relatively safe. Most of your investment assets are now in high interest government bonds. What would you do?",
+      "options": [
+        {"label": "a", "text": "Hold the bonds", "points": 1},
+        {"label": "b", "text": "Sell the bonds, put half the proceeds into money market accounts, and the other half into hard assets", "points": 2},
+        {"label": "c", "text": "Sell the bonds and put the total proceeds into hard assets", "points": 3},
+        {"label": "d", "text": "Sell the bonds, put all the money into hard assets, and borrow additional money to buy more", "points": 4}
+      ]
+    },
+    {
+      "n": 8,
+      "text": "Given the best and worst case returns of the four investment choices below, which would you prefer?",
+      "options": [
+        {"label": "a", "text": "$200 gain best case; $0 gain/loss worst case", "points": 1},
+        {"label": "b", "text": "$800 gain best case; $200 loss worst case", "points": 2},
+        {"label": "c", "text": "$2,600 gain best case; $800 loss worst case", "points": 3},
+        {"label": "d", "text": "$4,800 gain best case; $2,400 loss worst case", "points": 4}
+      ]
+    },
+    {
+      "n": 9,
+      "text": "In addition to whatever you own, you have been given $1,000. You are now asked to choose between:",
+      "options": [
+        {"label": "a", "text": "A sure gain of $500", "points": 1},
+        {"label": "b", "text": "A 50% chance to gain $1,000 and a 50% chance to gain nothing", "points": 3}
+      ]
+    },
+    {
+      "n": 10,
+      "text": "In addition to whatever you own, you have been given $2,000. You are now asked to choose between:",
+      "options": [
+        {"label": "a", "text": "A sure loss of $500", "points": 1},
+        {"label": "b", "text": "A 50% chance to lose $1,000 and a 50% chance to lose nothing", "points": 3}
+      ]
+    },
+    {
+      "n": 11,
+      "text": "Suppose a relative left you an inheritance of $100,000, stipulating in the will that you invest ALL the money in ONE of the following choices. Which one would you select?",
+      "options": [
+        {"label": "a", "text": "A savings account or money market mutual fund", "points": 1},
+        {"label": "b", "text": "A mutual fund that owns stocks and bonds", "points": 2},
+        {"label": "c", "text": "A portfolio of 15 common stocks", "points": 3},
+        {"label": "d", "text": "Commodities like gold, silver, and oil", "points": 4}
+      ]
+    },
+    {
+      "n": 12,
+      "text": "If you had to invest $20,000, which of the following investment choices would you find most appealing?",
+      "options": [
+        {"label": "a", "text": "60% in low-risk investments, 30% in medium-risk investments, 10% in high-risk investments", "points": 1},
+        {"label": "b", "text": "30% in low-risk investments, 40% in medium-risk investments, 30% in high-risk investments", "points": 2},
+        {"label": "c", "text": "10% in low-risk investments, 40% in medium-risk investments, 50% in high-risk investments", "points": 3}
+      ]
+    },
+    {
+      "n": 13,
+      "text": "Your trusted friend and neighbor, an experienced geologist, is putting together a group of investors to fund an exploratory gold mining venture. The venture could pay back 50 to 100 times the investment if successful. If the mine is a bust, the entire investment is worthless. Your friend estimates the chance of success is only 20%. If you had the money, how much would you invest?",
+      "options": [
+        {"label": "a", "text": "Nothing", "points": 1},
+        {"label": "b", "text": "One month's salary", "points": 2},
+        {"label": "c", "text": "Three month's salary", "points": 3},
+        {"label": "d", "text": "Six month's salary", "points": 4}
+      ]
+    }
+  ],
+  "scoring": [
+    {"min": 13, "max": 18, "category": "Low risk tolerance (conservative investor)"},
+    {"min": 19, "max": 22, "category": "Below-average risk tolerance"},
+    {"min": 23, "max": 28, "category": "Average/moderate risk tolerance"},
+    {"min": 29, "max": 32, "category": "Above-average risk tolerance"},
+    {"min": 33, "max": 47, "category": "High risk tolerance (aggressive investor)"}
+  ]
+}

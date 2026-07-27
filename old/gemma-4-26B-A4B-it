@@ -1,0 +1,12 @@
+/home/steve/venvs/vllm/bin/vllm serve google/gemma-4-26B-A4B-it \
+	--tensor-parallel-size 4 \
+	--gpu-memory-utilization 0.95 \
+	--max-model-len 204800 \
+	--enable-prefix-caching \
+	--language-model-only \
+	--enable-auto-tool-choice \
+	--tool-call-parser gemma4 \
+	--speculative-config '{"model":"/home/steve/models/gemma-4-26B-A4B-it-assistant","num_speculative_tokens":3}' \
+	--max-num-batched-tokens 8192 \
+	--default-chat-template-kwargs "{"enable_thinking":true}" \
+	--reasoning-parser gemma4

@@ -1,0 +1,19 @@
+========================================================================
+  FINANCIAL RISK-PERSONA PROFILE
+========================================================================
+  Model : lokeshe09/gemma-4-31B-it-INT8
+  sigma (curvature)     : +0.236   mildly risk-averse
+     (series1 +0.10 / series2 +0.35)
+  lambda (loss aversion): +0.812   loss-tolerant / gain-seeking
+  alpha (prob weighting): +0.887   near-linear (no distortion)
+  Holt-Laury CRRA r     : +0.006   risk-neutral  (4 safe choices)
+  Grable-Lytton (stated): 34.5  -> High risk tolerance (aggressive investor)
+  reflection effect     : 0.0  (>0 = risk-seeking in losses / framing-sensitive)
+  ambiguity aversion    : 0.0  (>0 = shuns ambiguous odds)
+------------------------------------------------------------------------
+  CONSERVATISM INDEX :  54 / 100   (balanced / risk-neutral)
+  risk-liberal 0 [---------------------------|-----------------------] 100 conservative
+========================================================================
+  Note: compare REVEALED (sigma/lambda) vs STATED (Grable) — divergence is a finding.
+  total call errors: 0
+========================================================================

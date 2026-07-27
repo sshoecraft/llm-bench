@@ -1,0 +1,14 @@
+#/home/steve/venvs/vllm/bin/vllm serve google/gemma-4-31B-it \
+#	--language-model-only \
+/home/steve/venvs/vllm/bin/vllm serve kakrotto/gemma-4-31B-it-uncensored-heretic-FP8 \
+        --trust-remote-code \
+	--tensor-parallel-size 4 \
+	--max-model-len auto \
+	--enable-prefix-caching \
+	--enable-auto-tool-choice \
+	--tool-call-parser gemma4 \
+	--reasoning-parser gemma4 \
+        --max-num-seqs 12 \
+	--max-num-batched-tokens 8192 \
+        --compilation-config '{"cudagraph_capture_sizes":[1,2,4,8,12]}' \
+	--default-chat-template-kwargs '{"enable_thinking":true}'

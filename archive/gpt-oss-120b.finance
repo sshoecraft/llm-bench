@@ -1,0 +1,20 @@
+Using random seed: 42
+Auto-selected model: openai/gpt-oss-120b
+Loading MMLU dataset from cache: /home/steve/.cache/shepherd/mmlu_test.json
+Loaded 14042 questions from cache
+Filtered to 1250 questions for subjects: college_mathematics, formal_logic, high_school_macroeconomics, professional_accounting, econometrics, high_school_microeconomics
+Randomly sampled 100 questions
+
+======================================================================
+MMLU BENCHMARK RESULTS
+======================================================================
+Provider: http://localhost:8000
+Total Questions: 100
+Correct: 95
+Incorrect: 5
+Errors: 0
+Accuracy: 95.0%
+Avg Response Time: 1760ms
+Total Duration: 176.1s
+======================================================================
+

@@ -1,0 +1,10 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Editor scratch copies (*.backup is a deliberate convention here — not ignored)
+*.save
+*~
+
+# Claude Code local state (settings.local.json is kept)
+.claude/scheduled_tasks.lock

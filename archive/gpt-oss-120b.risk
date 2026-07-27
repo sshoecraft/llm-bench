@@ -1,0 +1,27 @@
+  querying 1/12 (1 err) ~ 342s left     querying 2/12 (2 err) ~ 168s left     querying 3/12 (3 err) ~ 101s left     querying 4/12 (4 err) ~  70s left     querying 5/12 (5 err) ~  54s left     querying 6/12 (6 err) ~  53s left     querying 7/12 (7 err) ~  39s left     querying 8/12 (8 err) ~  29s left     querying 9/12 (9 err) ~  24s left     querying 10/12 (10 err) ~  41s left     querying 11/12 (11 err) ~  22s left     querying 12/12 (12 err) ~   0s left   
+  querying 1/4 (0 err) ~  65s left     querying 2/4 (1 err) ~  25s left     querying 3/4 (2 err) ~  20s left     querying 4/4 (3 err) ~   0s left   
+  grable 1/4 (1 err)     grable 2/4 (2 err)     grable 3/4 (3 err)     grable 4/4 (4 err)   
+  framing 1/16 (1 err)     framing 2/16 (1 err)     framing 3/16 (2 err)     framing 4/16 (2 err)     framing 5/16 (2 err)     framing 6/16 (3 err)     framing 7/16 (4 err)     framing 8/16 (4 err)     framing 9/16 (5 err)     framing 10/16 (5 err)     framing 11/16 (6 err)     framing 12/16 (7 err)     framing 13/16 (7 err)     framing 14/16 (8 err)     framing 15/16 (8 err)     framing 16/16 (9 err)   
+Risk-persona battery | backend=openai model=openai/gpt-oss-120b persona=neutral samples=4
+modes: tcn, hl, grable, framing
+
+[tcn] prospect-theory lottery series (sigma, lambda, alpha)...
+[hl] Holt-Laury price list (CRRA r)...
+[grable] Grable-Lytton stated risk tolerance...
+[framing] reflection effect + ambiguity aversion...
+
+========================================================================
+  FINANCIAL RISK-PERSONA PROFILE
+========================================================================
+  Model : openai/gpt-oss-120b
+  prospect theory : ERROR — insufficient valid TCN responses
+  Holt-Laury CRRA r     : +0.006   risk-neutral  (4 safe choices)
+  Grable-Lytton (stated): n/a — no valid grable responses
+  reflection effect     : 0.0  (>0 = risk-seeking in losses / framing-sensitive)
+  ambiguity aversion    : 0.0  (>0 = shuns ambiguous odds)
+------------------------------------------------------------------------
+  CONSERVATISM INDEX :  50 / 100   (balanced / risk-neutral)
+  risk-liberal 0 [-------------------------|-------------------------] 100 conservative
+========================================================================
+  total call errors: 28
+========================================================================

@@ -1,0 +1,53 @@
+#!/bin/bash
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+# Left at the default (profiling ON) so CUDA graph memory is accounted for
+# during KV cache sizing. With it disabled + a wide cudagraph capture ladder
+# (max-num-seqs=256, no manual --compilation-config cap) graph capture OOM'd
+# after KV cache allocation had already claimed everything up to
+# --gpu-memory-utilization.
+export VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1
+
+# Max-clients config for the WoW bot decision engine, tuned to a hard
+# ceiling of 64 concurrent clients -- measured via a real concurrent load
+# sweep (1/8/16/32/64/96/128/192 parallel clients against this exact
+# config). 64 was the last clean data point (1862 agg tok/s, TTFT 322ms,
+# ITL 34ms, zero failures). 96+ plateaus in throughput and TTFT balloons
+# past 2s. 192 OOM-crashed the whole engine: torch.OutOfMemoryError inside
+# the speculative-decoding rejection sampler (rejection_sampler.py
+# sample_recovered_tokens), whose per-step scratch memory scales with
+# batch size -- at max-num-seqs=256 the scheduler kept admitting sequences
+# toward that cap until the batch got big enough to blow through whatever
+# --gpu-memory-utilization had left after KV cache. That's a fatal,
+# whole-engine failure (every in-flight client dies, not just the
+# offending request), so 64 is set as a hard admission cap, not a soft
+# target -- request 65 queues instead of growing the batch further.
+#
+#   - max-num-seqs 256 -> 64: the actual fix. Structurally prevents the
+#     batch from ever reaching the size that OOM'd the rejection sampler.
+#   - --compilation-config added, capped at 64: vLLM's auto-sized capture
+#     ladder went up to 512 (batch sizes that can now never occur, since
+#     admission is capped at 64) -- wasted CUDA graph memory. Trimming it
+#     to match frees that memory back to the KV cache pool and speeds up
+#     startup.
+#   - max-model-len stays auto: confirmed via KV-cache-size log lines
+#     across both configs that this was never the memory driver (Gemma4's
+#     sliding-window layers keep it cheap) -- max-num-seqs and
+#     gpu-memory-utilization were.
+/home/steve/venvs/vllm/bin/vllm serve google/gemma-4-26B-A4B-it \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len auto \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+        --tool-call-parser gemma4 \
+        --reasoning-parser gemma4 \
+        --speculative-config '{"model":"/home/steve/models/gemma-4-26B-A4B-it-assistant","num_speculative_tokens":3}' \
+        --max-num-seqs 64 \
+        --max-num-batched-tokens 8192 \
+        --kv-cache-dtype auto \
+        --gpu-memory-utilization 0.94 \
+        --compilation-config '{"cudagraph_capture_sizes":[1,2,4,8,16,24,32,40,48,56,64]}' \
+        --default-chat-template-kwargs '{"enable_thinking":false}'
+
+exit 0
+

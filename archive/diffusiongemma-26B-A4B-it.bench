@@ -1,0 +1,41 @@
+Auto-selected model: google/diffusiongemma-26B-A4B-it
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: google/diffusiongemma-26B-A4B-it
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 288.31 t/s, TTFT: 1514.3ms, ITL: 3.47ms, tokens: 1907
+  Run 2: 289.49 t/s, TTFT: 1247.4ms, ITL: 3.45ms, tokens: 1893
+  Run 3: 268.47 t/s, TTFT: 1050.6ms, ITL: 3.72ms, tokens: 1945
+  Run 4: 275.20 t/s, TTFT: 1386.2ms, ITL: 3.63ms, tokens: 2013
+  Run 5: 280.15 t/s, TTFT: 1048.3ms, ITL: 3.57ms, tokens: 1936
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 1938.8
+
+Tokens/sec:
+  Mean:   280.32
+  Median: 280.15
+  StdDev: 8.87
+  P5:     268.47
+  P95:    289.49
+
+Time to First Token (ms):
+  Mean:   1249.4
+  Median: 1247.4
+  P5:     1048.3
+  P95:    1514.3
+
+Inter-Token Latency (ms):
+  Mean:   3.57
+  Median: 3.57
+============================================================

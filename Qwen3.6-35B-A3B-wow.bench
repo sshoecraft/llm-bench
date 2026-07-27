@@ -1,0 +1,41 @@
+Auto-selected model: Qwen/Qwen3.6-35B-A3B
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: Qwen/Qwen3.6-35B-A3B
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 174.22 t/s, TTFT: 85.2ms, ITL: 5.74ms, tokens: 2047
+  Run 2: 173.35 t/s, TTFT: 88.6ms, ITL: 5.77ms, tokens: 2048
+  Run 3: 174.07 t/s, TTFT: 95.6ms, ITL: 5.74ms, tokens: 1950
+  Run 4: 171.78 t/s, TTFT: 86.7ms, ITL: 5.82ms, tokens: 2048
+  Run 5: 170.36 t/s, TTFT: 101.0ms, ITL: 5.87ms, tokens: 1863
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 1991.2
+
+Tokens/sec:
+  Mean:   172.76
+  Median: 173.35
+  StdDev: 1.65
+  P5:     170.36
+  P95:    174.22
+
+Time to First Token (ms):
+  Mean:   91.4
+  Median: 88.6
+  P5:     85.2
+  P95:    101.0
+
+Inter-Token Latency (ms):
+  Mean:   5.79
+  Median: 5.77
+============================================================

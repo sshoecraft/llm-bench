@@ -1,0 +1,40 @@
+Auto-selected model: google/gemma-4-26B-A4B-it
+Benchmarking: http://localhost:8000/v1
+Model: google/gemma-4-26B-A4B-it
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 192.44 t/s, TTFT: 139.9ms, ITL: 5.20ms, tokens: 2048
+  Run 2: 190.98 t/s, TTFT: 133.3ms, ITL: 5.24ms, tokens: 2048
+  Run 3: 192.12 t/s, TTFT: 137.4ms, ITL: 5.21ms, tokens: 2048
+  Run 4: 188.01 t/s, TTFT: 133.4ms, ITL: 5.32ms, tokens: 2048
+  Run 5: 194.60 t/s, TTFT: 143.5ms, ITL: 5.14ms, tokens: 2048
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 2048.0
+
+Tokens/sec:
+  Mean:   191.63
+  Median: 192.12
+  StdDev: 2.41
+  P5:     188.01
+  P95:    194.60
+
+Time to First Token (ms):
+  Mean:   137.5
+  Median: 137.4
+  P5:     133.3
+  P95:    143.5
+
+Inter-Token Latency (ms):
+  Mean:   5.22
+  Median: 5.21
+============================================================

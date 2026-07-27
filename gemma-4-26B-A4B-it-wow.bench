@@ -1,0 +1,41 @@
+Auto-selected model: google/gemma-4-26B-A4B-it
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: google/gemma-4-26B-A4B-it
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 190.68 t/s, TTFT: 43.8ms, ITL: 5.24ms, tokens: 1279
+  Run 2: 198.11 t/s, TTFT: 46.0ms, ITL: 5.05ms, tokens: 1183
+  Run 3: 191.89 t/s, TTFT: 45.5ms, ITL: 5.21ms, tokens: 1292
+  Run 4: 185.34 t/s, TTFT: 46.9ms, ITL: 5.40ms, tokens: 1398
+  Run 5: 195.15 t/s, TTFT: 48.8ms, ITL: 5.12ms, tokens: 1307
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 1291.8
+
+Tokens/sec:
+  Mean:   192.23
+  Median: 191.89
+  StdDev: 4.83
+  P5:     185.34
+  P95:    198.11
+
+Time to First Token (ms):
+  Mean:   46.2
+  Median: 46.0
+  P5:     43.8
+  P95:    48.8
+
+Inter-Token Latency (ms):
+  Mean:   5.20
+  Median: 5.21
+============================================================

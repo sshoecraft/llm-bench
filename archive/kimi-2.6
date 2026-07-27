@@ -1,0 +1,12 @@
+/home/steve/venvs/vllm/bin/vllm serve moonshotai/Kimi-K2.6 \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 65536 \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+        --tool-call-parser kimi_k2 \
+        --reasoning-parser kimi_k2 \
+        --kv-cache-dtype auto \
+        --compilation-config 3 \
+        --gpu-memory-utilization 0.95 \
+        --max-num-batched-tokens 16384

@@ -1,0 +1,17 @@
+#export VLLM_USE_FLASHINFER_MOE_FP4=1
+#export VLLM_USE_FLASHINFER_MOE_FP8=1
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+/home/steve/venvs/vllm/bin/vllm serve nvidia/Llama-4-Scout-17B-16E-Instruct-NVFP4 \
+        --trust-remote-code \
+	--tensor-parallel-size 4 \
+	--max-model-len auto \
+	--gpu-memory-utilization 0.92 \
+	--language-model-only \
+	--enable-auto-tool-choice \
+	--tool-call-parser llama4_pythonic \
+	--chat-template /home/steve/models/tests/llama4_chat_template.jinja \
+	--async-scheduling \
+	--no-enable-prefix-caching \
+	--max-num-seqs 16 \
+	--max-num-batched-tokens 4096 \
+	--compilation-config '{"pass_config":{"fuse_allreduce_rms":true,"eliminate_noops":true},"cudagraph_capture_sizes":[1,2,4,8,16]}'

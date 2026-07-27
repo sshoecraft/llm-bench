@@ -1,0 +1,41 @@
+Auto-selected model: lokeshe09/gemma-4-31B-it-INT8
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: lokeshe09/gemma-4-31B-it-INT8
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 56.15 t/s, TTFT: 161.6ms, ITL: 17.81ms, tokens: 2047
+  Run 2: 55.90 t/s, TTFT: 165.5ms, ITL: 17.89ms, tokens: 2048
+  Run 3: 55.78 t/s, TTFT: 159.2ms, ITL: 17.93ms, tokens: 2048
+  Run 4: 55.68 t/s, TTFT: 157.6ms, ITL: 17.96ms, tokens: 2048
+  Run 5: 55.71 t/s, TTFT: 152.7ms, ITL: 17.95ms, tokens: 1876
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 2013.4
+
+Tokens/sec:
+  Mean:   55.84
+  Median: 55.78
+  StdDev: 0.19
+  P5:     55.68
+  P95:    56.15
+
+Time to First Token (ms):
+  Mean:   159.3
+  Median: 159.2
+  P5:     152.7
+  P95:    165.5
+
+Inter-Token Latency (ms):
+  Mean:   17.91
+  Median: 17.93
+============================================================

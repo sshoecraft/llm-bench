@@ -1,0 +1,17 @@
+#!/bin/bash
+# Force FlashInfer for blistering-fast long context & FP8 processing
+export VLLM_ATTENTION_BACKEND="FLASHINFER"
+
+/home/steve/venvs/vllm/bin/vllm serve openai/gpt-oss-120b \
+  --tensor-parallel-size 4 \
+  --gpu-memory-utilization 0.95 \
+  --max-model-len 131072 \
+  --enable-chunked-prefill \
+  --max-num-batched-tokens 16384 \
+  --otlp-traces-endpoint "" \
+  --stream-interval 1 \
+  --tool-call-parser openai \
+  --enable-auto-tool-choice \
+  --max-num-seqs 8 \
+  --compilation-config '{"cudagraph_capture_sizes":[1,2,4,8]}' \
+  --speculative-config '{"model":"nvidia/gpt-oss-120b-Eagle3-v3","num_speculative_tokens":7,"method":"eagle3"}'

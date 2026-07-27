@@ -1,0 +1,26 @@
+#!/bin/bash
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+# max-num-batched-tokens drives the memory profiler's peak: bigger prefill chunks =
+# bigger logit/activation transients reserved during profiling, straight out of the
+# KV pool. At 32768 that left only 2.53 GiB KV, exactly the amount a 262144 context
+# needs, and vLLM >=0.21.0's default cudagraph profiling tipped it just under ->
+# hard startup failure. Dropping to 8192 (below) frees the reservation: KV goes
+# 2.57 -> 5.05 GiB (265k -> 522k tokens) at the SAME gpu-memory-utilization 0.97.
+# Measured 2026-07-24. Decode only needs max_num_seqs*context batched tokens; 8192
+# is plenty and is what the -wow config already uses. Keeping the env var too since
+# every Gemma script sets it and it costs nothing.
+export VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0
+
+/home/steve/venvs/vllm/bin/vllm serve Qwen/Qwen3.6-35B-A3B \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 262144 \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+	--tool-call-parser qwen3_coder \
+        --reasoning-parser qwen3 \
+        --max-num-seqs 8 \
+        --compilation-config '{"cudagraph_capture_sizes":[1,2,4,8]}' \
+        --max-num-batched-tokens 8192 \
+        --chat-template /home/steve/models/Qwen3.6-35B-A3B_chat_template.jinja \
+        --gpu-memory-utilization 0.97

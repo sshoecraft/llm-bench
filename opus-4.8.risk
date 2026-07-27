@@ -1,0 +1,19 @@
+========================================================================
+  FINANCIAL RISK-PERSONA PROFILE
+========================================================================
+  Model : opus
+  sigma (curvature)     : +0.405   risk-averse
+     (series1 +0.31 / series2 +0.50)
+  lambda (loss aversion): +1.092   loss-neutral
+  alpha (prob weighting): +0.901   near-linear (no distortion)
+  Holt-Laury CRRA r     : +0.542   risk-averse  (6 safe choices)
+  Grable-Lytton (stated): 27.5  -> Average/moderate risk tolerance
+  reflection effect     : 0.0  (>0 = risk-seeking in losses / framing-sensitive)
+  ambiguity aversion    : 0.0  (>0 = shuns ambiguous odds)
+------------------------------------------------------------------------
+  CONSERVATISM INDEX :  67 / 100   (conservative-leaning)
+  risk-liberal 0 [----------------------------------|----------------] 100 conservative
+========================================================================
+  Note: compare REVEALED (sigma/lambda) vs STATED (Grable) — divergence is a finding.
+  total call errors: 0
+========================================================================

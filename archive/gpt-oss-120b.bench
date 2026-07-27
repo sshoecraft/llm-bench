@@ -1,0 +1,41 @@
+Auto-selected model: openai/gpt-oss-120b
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: openai/gpt-oss-120b
+Max tokens: 2048
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 184.96 t/s, TTFT: 147.2ms, ITL: 5.41ms, tokens: 2048
+  Run 2: 172.32 t/s, TTFT: 150.3ms, ITL: 5.80ms, tokens: 2048
+  Run 3: 173.54 t/s, TTFT: 150.4ms, ITL: 5.76ms, tokens: 2048
+  Run 4: 176.51 t/s, TTFT: 140.5ms, ITL: 5.67ms, tokens: 2048
+  Run 5: 168.03 t/s, TTFT: 154.8ms, ITL: 5.95ms, tokens: 2048
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 2048.0
+
+Tokens/sec:
+  Mean:   175.07
+  Median: 173.54
+  StdDev: 6.31
+  P5:     168.03
+  P95:    184.96
+
+Time to First Token (ms):
+  Mean:   148.7
+  Median: 150.3
+  P5:     140.5
+  P95:    154.8
+
+Inter-Token Latency (ms):
+  Mean:   5.72
+  Median: 5.76
+============================================================

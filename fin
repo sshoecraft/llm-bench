@@ -1,0 +1,1 @@
+./test_model.py --benchmark mmlu --count 100 --max_tokens 65536 --seed 42 --subjects college_mathematics formal_logic high_school_macroeconomics professional_accounting econometrics high_school_microeconomics
