@@ -1,0 +1,41 @@
+#!/bin/bash
+# Same as ./Qwen3.8-27B-Uncensored-INT8 but with the native MTP head enabled for
+# speculative decoding. Kept as a separate launcher so the two can be A/B'd with
+# api_bench --runs 12 rather than guessed at.
+#
+# Why this is worth measuring rather than assuming: the recorded Ampere MTP loss
+# (mtp3 -11.7%, mtp2 -21.4%) was on Qwen3.6-35B-A3B, and the cause was specific to
+# that model -- its MTP block is a full 256-expert MoE layer, 1.57 GiB run per draft
+# step, so the draft cost swamped a perfectly healthy 2.33-2.37 accept length.
+# Qwen3.8-27B is dense, so the draft step is a dense block instead, which is the
+# same shape as Gemma's 840 MB dense drafter that measured +21.6% on this hardware.
+# Decode at batch 1 on 4x3090 is bandwidth-bound, which is exactly where spec
+# decoding pays. Expect this to win; verify it anyway.
+#
+# The INT8 quant deliberately leaves the MTP head in BF16, so it is intact here.
+#
+# KV is a non-issue here: the plain INT8 config reported a GPU KV cache of 921,732
+# tokens at --max-model-len 262144, i.e. 3.5x the context. The ~0.39 GiB/GPU MTP
+# overhead measured on 3.6 cannot dent that, so this stays at the full 262144 and
+# the A/B against the plain script is apples-to-apples.
+#
+# Baseline to beat (plain INT8, api_bench --runs 12): 64.04 t/s mean, StdDev 0.14,
+# TTFT 197.1 ms, ITL 15.62 ms.
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+export VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0
+
+/home/steve/venvs/vllm/bin/vllm serve orcarouter/Qwen3.8-27B-Uncensored-INT8 \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 262144 \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+        --tool-call-parser qwen3_coder \
+        --reasoning-parser qwen3 \
+        --speculative-config '{"method":"mtp","num_speculative_tokens":3}' \
+        --max-num-seqs 8 \
+        --max-num-batched-tokens 8192 \
+        --kv-cache-dtype auto \
+        --compilation-config '{"cudagraph_capture_sizes":[1,2,4,8]}' \
+        --gpu-memory-utilization 0.97 \
+        --default-chat-template-kwargs '{"enable_thinking":true}'

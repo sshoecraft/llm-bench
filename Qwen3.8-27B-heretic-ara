@@ -1,0 +1,34 @@
+#!/bin/bash
+# Qwen3.8-27B, ARA-abliterated by Heretic. This is the BF16 safetensors parent that
+# the 0bserverx Heretic-Abliterated-Uncensored GGUF repo was built from -- there is
+# no INT8/W8A8 build of any heretic variant on the hub, so this one runs unquantized.
+#
+# ~55.6 GiB of weights -> ~13.9 GiB/GPU at TP4, roughly double the INT8 uncensored
+# build, so KV headroom is correspondingly tighter. The hybrid Gated DeltaNet stack
+# (48 linear-attention + 16 full-attention layers) only pays KV on the 16 full
+# layers, which is what makes 262144 reachable at all here. If startup dies in the
+# KV allocation, halve --max-model-len to 131072 before touching anything else.
+#
+# No --speculative-config here, but see the note in Qwen3.8-27B-Uncensored-INT8-mtp:
+# the recorded Ampere MTP loss was a Qwen3.6-35B-A3B MoE-drafter problem and should
+# not be assumed for a dense 27B. The MTP head is present in this repo
+# (model-auxiliary.safetensors, 849 MB), so it can be enabled the same way -- though
+# with BF16 weights already eating 13.9 GiB/GPU, the extra ~0.39 GiB/GPU of KV bites
+# harder here than it does on the INT8 build.
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+export VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0
+
+/home/steve/venvs/vllm/bin/vllm serve trohrbaugh/Qwen3.8-27B-heretic-ara \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 262144 \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+        --tool-call-parser qwen3_coder \
+        --reasoning-parser qwen3 \
+        --max-num-seqs 8 \
+        --max-num-batched-tokens 8192 \
+        --kv-cache-dtype auto \
+        --compilation-config '{"cudagraph_capture_sizes":[1,2,4,8]}' \
+        --gpu-memory-utilization 0.97 \
+        --default-chat-template-kwargs '{"enable_thinking":true}'

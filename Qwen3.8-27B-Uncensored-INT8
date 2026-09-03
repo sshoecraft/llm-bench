@@ -1,0 +1,39 @@
+#!/bin/bash
+# Qwen3.8-27B abliterated (refusal direction orthogonalized out at layer 38),
+# INT8 W8A8 compressed-tensors: per-channel INT8 weights + dynamic per-token INT8
+# activations on the 400 LM linears. Vision tower, norms, embeddings, lm_head and
+# the MTP head stay BF16. ~31.2 GiB of weights -> ~7.8 GiB/GPU at TP4, which leaves
+# plenty of headroom for KV on the 4x3090s.
+#
+# INT8 and not FP8: these are GA102 (SM 8.6). No FP8 tensor cores. Every FP8 path
+# tried on this box either errors outright or silently dequantizes to BF16 for zero
+# gain.
+#
+# No --speculative-config here, but that is the UNMEASURED baseline, not a verdict.
+# The model does have a native MTP head and vLLM serves it. See the -mtp sibling
+# script and A/B the two with api_bench before settling. The known Ampere MTP loss
+# (-11.7% / -21.4%) was on Qwen3.6-35B-A3B, whose MTP block is a full 256-expert
+# MoE layer costing 1.57 GiB per draft step -- that reason does not transfer to a
+# dense 27B, and Gemma's dense drafter won +21.6% on this same box.
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+
+# See Qwen3.6-35B-A3B for the full write-up. Short version: max-num-batched-tokens
+# drives the memory profiler's peak, and vLLM >=0.21.0's default cudagraph
+# profiling reserves that transient straight out of the KV pool. 8192 + this env
+# var off keeps the KV allocation large enough for the full 262144 context.
+export VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0
+
+/home/steve/venvs/vllm/bin/vllm serve orcarouter/Qwen3.8-27B-Uncensored-INT8 \
+        --trust-remote-code \
+        --tensor-parallel-size 4 \
+        --max-model-len 262144 \
+        --enable-prefix-caching \
+        --enable-auto-tool-choice \
+        --tool-call-parser qwen3_coder \
+        --reasoning-parser qwen3 \
+        --max-num-seqs 8 \
+        --max-num-batched-tokens 8192 \
+        --kv-cache-dtype auto \
+        --compilation-config '{"cudagraph_capture_sizes":[1,2,4,8]}' \
+        --gpu-memory-utilization 0.97 \
+        --default-chat-template-kwargs '{"enable_thinking":true}'
