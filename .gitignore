@@ -8,3 +8,7 @@ __pycache__/
 
 # Claude Code local state (settings.local.json is kept)
 .claude/scheduled_tasks.lock
+
+# macOS AppleDouble sidecars, created when files are copied from a Mac
+._*
+.DS_Store
