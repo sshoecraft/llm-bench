@@ -1,0 +1,54 @@
+Auto-selected model: trohrbaugh/Qwen3.8-27B-heretic-ara
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: trohrbaugh/Qwen3.8-27B-heretic-ara
+Reasoning switches: (none sent, server default)
+Max tokens: 4096
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 45.50 t/s, TTFT: 212.9ms, ITL: 21.98ms, tokens: 4096
+  Run 2: 45.41 t/s, TTFT: 188.7ms, ITL: 22.02ms, tokens: 4096
+  Run 3: 45.39 t/s, TTFT: 209.3ms, ITL: 22.03ms, tokens: 4096
+  Run 4: 45.39 t/s, TTFT: 183.9ms, ITL: 22.03ms, tokens: 4096
+  Run 5: 45.38 t/s, TTFT: 180.7ms, ITL: 22.04ms, tokens: 4096
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 4096.0
+
+Tokens/sec:
+  Mean:   45.41
+  Median: 45.39
+  StdDev: 0.05
+  P5:     45.38
+  P95:    45.50
+
+Time to First Token (ms):
+  Mean:   195.1
+  Median: 188.7
+  P5:     180.7
+  P95:    212.9
+
+Time to First ANSWER Token (ms):   [vs TTFT above -- gap is the reasoning pass]
+  Mean:   19984.0
+  Median: 12781.7
+  P5:     2012.3
+  P95:    60143.2
+
+Inter-Token Latency (ms):
+  Mean:   22.02
+  Median: 22.03
+
+Reasoning pass:
+  Runs with reasoning: 5/5
+  Mean reasoning chars: 3748
+  Mean answer chars:    12418
+  Reasoning share of generated text: 23.2%
+============================================================
