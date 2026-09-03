@@ -23,7 +23,7 @@ them.
 
 | Tool | What it measures |
 |---|---|
-| `api_bench.py` | Unified benchmark across OpenAI, Anthropic and Gemini APIs — tokens/sec, TTFT, inter-token latency, over a fixed diverse prompt set to defeat prefix caching. |
+| `llm_bench.py` | Unified benchmark across OpenAI-compatible, Anthropic, Gemini and claude-CLI endpoints — pooled decode throughput, TTFT/TTFA, inter-chunk latency, over a fixed diverse prompt set to defeat prefix caching. Supports paired A/B via `--variant`, judged by sign test. Replaces `api_bench.py` (now in `archive/`). |
 | `concurrent_sweep.py` | Sweeps concurrency levels (1→128) and reports per-request tok/s, TTFT, ITL and aggregate throughput at each level. This is what exposes CUDA-graph capture cliffs. |
 | `tpbench.py` | Lean concurrent throughput probe with synthetic fixed-length input/output. |
 

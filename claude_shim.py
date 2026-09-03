@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """OpenAI-compatible HTTP shim that puts the `claude` CLI (Claude Code) behind
-/v1/chat/completions and /v1/models, so api_bench.py, openai_bench.py, and
+/v1/chat/completions and /v1/models, so llm_bench.py, openai_bench.py, and
 test_model.py can benchmark against it unmodified via --base-url.
 
 Each request spawns a real `claude --print` session (adapters/claude.py) with

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Same as ./Qwen3.8-27B-Uncensored-INT8 but with the native MTP head enabled for
 # speculative decoding. Kept as a separate launcher so the two can be A/B'd with
-# api_bench --runs 12 rather than guessed at.
+# llm_bench rather than guessed at.
 #
 # Why this is worth measuring rather than assuming: the recorded Ampere MTP loss
 # (mtp3 -11.7%, mtp2 -21.4%) was on Qwen3.6-35B-A3B, and the cause was specific to

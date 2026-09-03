@@ -2,9 +2,17 @@
 # Sweep the three Qwen3.8-27B launchers and capture a .bench for each.
 #
 # Each launcher runs `vllm serve` in the foreground, so this backgrounds it,
-# waits for :8000 to answer, runs the bare `./api_bench.py` (5 runs, 1 warmup,
-# --max-tokens 4096 -- no args, to stay apples-to-apples with the rest of the
-# repo's .bench files), then tears the server down before the next model.
+# waits for :8000 to answer, runs the bare `./llm_bench.py` (no args, matching
+# how the rest of the repo's .bench files were taken), then tears the server
+# down before the next model.
+#
+# This used to call ./api_bench.py, which now lives in archive/. llm_bench.py is
+# NOT a drop-in for the .bench format. Bare invocation is now 12 runs / 1 warmup
+# / --max-tokens 1024, against api_bench's 5 / 1 / 4096, and the summary is
+# pooled throughput plus percentile rows instead of a mean/StdDev block. The
+# three Qwen3.8 .bench files committed in 8ccfbae and 6d307ef came from
+# api_bench and will not match anything produced from here on -- re-run all
+# three together if you want a comparable set.
 #
 # The box's normal resident service (gemma-4-31B-it-INT8) is stopped first and
 # restarted at the end, whether the sweep succeeds or not.
@@ -96,9 +104,9 @@ for m in "${MODELS[@]}"; do
 
     if (( ready )); then
         echo "  ready after ${SECONDS}s-ish, benching -> $m.bench"
-        ./api_bench.py > "$REPO/$m.bench" 2>&1
+        ./llm_bench.py > "$REPO/$m.bench" 2>&1
         rc=$?
-        (( rc == 0 )) || { echo "  api_bench exit $rc"; FAILED+=("$m:bench-rc-$rc"); }
+        (( rc == 0 )) || { echo "  llm_bench exit $rc"; FAILED+=("$m:bench-rc-$rc"); }
         grep -c 'Running: 1 reqs' "$LOGDIR/$m.server.log" 2>/dev/null \
             | sed 's/^/  taint check, single-stream log samples: /'
         grep -cE 'Running: ([02-9]|[1-9][0-9]+) reqs' "$LOGDIR/$m.server.log" 2>/dev/null \

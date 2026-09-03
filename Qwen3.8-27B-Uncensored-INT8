@@ -11,7 +11,7 @@
 #
 # No --speculative-config here, but that is the UNMEASURED baseline, not a verdict.
 # The model does have a native MTP head and vLLM serves it. See the -mtp sibling
-# script and A/B the two with api_bench before settling. The known Ampere MTP loss
+# script and A/B the two with llm_bench before settling. The known Ampere MTP loss
 # (-11.7% / -21.4%) was on Qwen3.6-35B-A3B, whose MTP block is a full 256-expert
 # MoE layer costing 1.57 GiB per draft step -- that reason does not transfer to a
 # dense 27B, and Gemma's dense drafter won +21.6% on this same box.
