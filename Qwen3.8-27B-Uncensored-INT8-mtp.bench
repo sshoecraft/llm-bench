@@ -1,0 +1,54 @@
+Auto-selected model: orcarouter/Qwen3.8-27B-Uncensored-INT8
+Benchmarking: http://localhost:8000/v1
+API Type: openai
+Model: orcarouter/Qwen3.8-27B-Uncensored-INT8
+Reasoning switches: (none sent, server default)
+Max tokens: 4096
+Streaming: True
+
+Warming up (1 runs)...
+Running benchmark (5 runs)...
+  Run 1: 89.77 t/s, TTFT: 232.6ms, ITL: 11.14ms, tokens: 4096
+  Run 2: 89.12 t/s, TTFT: 219.7ms, ITL: 11.22ms, tokens: 4096
+  Run 3: 87.57 t/s, TTFT: 232.9ms, ITL: 11.42ms, tokens: 4096
+  Run 4: 87.48 t/s, TTFT: 234.0ms, ITL: 11.43ms, tokens: 4096
+  Run 5: 83.14 t/s, TTFT: 228.3ms, ITL: 12.03ms, tokens: 4096
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+Total runs: 5
+Successful:  5 (100.0%)
+Failed:      0 (0.0%)
+
+Avg tokens generated: 4096.0
+
+Tokens/sec:
+  Mean:   87.42
+  Median: 87.57
+  StdDev: 2.59
+  P5:     83.14
+  P95:    89.77
+
+Time to First Token (ms):
+  Mean:   229.5
+  Median: 232.6
+  P5:     219.7
+  P95:    234.0
+
+Time to First ANSWER Token (ms):   [vs TTFT above -- gap is the reasoning pass]
+  Mean:   8628.1
+  Median: 8103.1
+  P5:     1945.7
+  P95:    16469.3
+
+Inter-Token Latency (ms):
+  Mean:   11.45
+  Median: 11.42
+
+Reasoning pass:
+  Runs with reasoning: 5/5
+  Mean reasoning chars: 2722
+  Mean answer chars:    13598
+  Reasoning share of generated text: 16.8%
+============================================================
